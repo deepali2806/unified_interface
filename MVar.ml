@@ -64,7 +64,8 @@ let rec take mv =
                                             !p 
                                           )
                         )
-                  with Exit -> Printf.printf "\nInside Exit of take%!";
+                  with Exit -> 
+                  (*Printf.printf "\nInside Exit of take%!";*)
                                   take mv )
                              
   | Full (v, q) ->
