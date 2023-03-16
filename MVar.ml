@@ -1,6 +1,6 @@
 open Effect
 
-exception Abort_take of string
+exception Abort of string
 
 type 'a mv_state =
   | Full  of 'a * ('a * unit Sched.resumer) Fun_queue.t
@@ -41,12 +41,15 @@ let rec put mv v =
                                                   let ret = Atomic.compare_and_set mv old_contents new_contents in 
                                                   if ret then
                                                     begin
-                                                      resume (Ok v);
-                                                      ()
-                                                      (* This was added for cancellation purpose ::==>
-                                                        let ret1 = resume (Ok v) in
-                                                      if ret1 then ()
-                                                      else raise (Abort_take "Excception in Put because it is already aborted")   *)
+                                                      (* resume (Ok v);
+                                                      () *)
+                                                      (* This was added for cancellation purpose ::==> *)
+                                                      let ret1 = resume (v) in
+                                                      if ret1 = Resume_success then ()
+                                                      else 
+                                                      (* Retrying *)
+                                                        put mv v
+                                                      (* raise (Abort "Excception in Put because it is already aborted")   *)
                                                     end                                               
                                                   else
                                                     put mv v
@@ -80,17 +83,18 @@ let rec take mv =
                   end 
                 else
                     match Fun_queue.pop q with
-                    | None -> raise (Abort_take "Control will never reach here, Exception in take when popping from empty queue")
+                    | None -> raise (Abort "Control will never reach here, Exception in take when popping from empty queue")
                     | Some ((v', resume), newQueue) -> 
                                                   let new_contents = Full (v', newQueue) in
                                                   let ret = Atomic.compare_and_set mv old_contents new_contents in 
                                                   if ret then
                                                     begin
-                                                      resume (Ok ());
-                                                      v
-                                                    (* let ret1 = resume (Ok ()) in 
-                                                      if ret1 then v
-                                                      else raise (Abort_take "Excception in Take because it is already aborted")    *)
+                                                      (* resume (Ok ());
+                                                      v *)
+                                                      let ret1 = resume ( ()) in 
+                                                      if ret1 = Resume_success then v
+                                                      else take mv
+                                                      (* raise (Abort "Excception in Take because it is already aborted")    *)
                                                     end
                                                   else
                                                     take mv                 
