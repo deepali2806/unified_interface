@@ -1,0 +1,6 @@
+description = ""
+requires = "fmt"
+archive(byte) = "unified_interface.cma"
+archive(native) = "unified_interface.cmxa"
+plugin(byte) = "unified_interface.cma"
+plugin(native) = "unified_interface.cmxs"
