@@ -1,0 +1,173 @@
+# dune build
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Workspace root: /mnt/c/Users/Anand/unified_interface
+# Auto-detected concurrency: 4
+$ /home/deepali/.opam/5.0.0/bin/ocamlc.opt -config > /tmp/dune_479e17_output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; ocaml_bin = External "/home/deepali/.opam/5.0.0/bin"
+#  ; ocaml = Ok External "/home/deepali/.opam/5.0.0/bin/ocaml"
+#  ; ocamlc = External "/home/deepali/.opam/5.0.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/home/deepali/.opam/5.0.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/home/deepali/.opam/5.0.0/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/home/deepali/.opam/5.0.0/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/home/deepali/.opam/5.0.0/lib/ocaml:/home/deepali/.opam/5.0.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/home/deepali/.opam/5.0.0/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/mnt/c/Users/Anand/unified_interface"
+#        ; "INSIDE_DUNE" :
+#            "/mnt/c/Users/Anand/unified_interface/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/mnt/c/Users/Anand/unified_interface/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/mnt/c/Users/Anand/unified_interface/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/mnt/c/Users/Anand/unified_interface/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_paths =
+#      [ External "/home/deepali/.opam/5.0.0/lib/ocaml"
+#      ; External "/home/deepali/.opam/5.0.0/lib"
+#      ]
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "5.0.0"
+#      ; standard_library_default = "/home/deepali/.opam/5.0.0/lib/ocaml"
+#      ; standard_library = "/home/deepali/.opam/5.0.0/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ]
+#      ; native_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X032"
+#      ; cmi_magic_number = "Caml1999I032"
+#      ; cmo_magic_number = "Caml1999O032"
+#      ; cma_magic_number = "Caml1999A032"
+#      ; cmx_magic_number = "Caml1999Y032"
+#      ; cmxa_magic_number = "Caml1999Z032"
+#      ; ast_impl_magic_number = "Caml1999M032"
+#      ; ast_intf_magic_number = "Caml1999N032"
+#      ; cmxs_magic_number = "Caml1999D032"
+#      ; cmt_magic_number = "Caml1999T032"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl streams.ml) > _build/default/.unified_interface.objs/unified_interface__Streams.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl composable_mutex.ml) > _build/default/.unified_interface.objs/unified_interface__Composable_mutex.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I .unified_interface.objs/byte -no-alias-deps -opaque -o .unified_interface.objs/byte/unified_interface.cmo -c -impl unified_interface.ml-gen)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl fun_queue.ml) > _build/default/.unified_interface.objs/unified_interface__Fun_queue.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl MVar.ml) > _build/default/.unified_interface.objs/unified_interface__MVar.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl monad.ml) > _build/default/.unified_interface.objs/unified_interface__Monad.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -impl sched.ml) > _build/default/.unified_interface.objs/unified_interface__Sched.impl.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o .unified_interface.objs/native/unified_interface.cmx -c -impl unified_interface.ml-gen)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf fun_queue.mli) > _build/default/.unified_interface.objs/unified_interface__Fun_queue.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf MVar.mli) > _build/default/.unified_interface.objs/unified_interface__MVar.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf composable_mutex.mli) > _build/default/.unified_interface.objs/unified_interface__Composable_mutex.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf monad.mli) > _build/default/.unified_interface.objs/unified_interface__Monad.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf sched.mli) > _build/default/.unified_interface.objs/unified_interface__Sched.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamldep.opt -modules -intf streams.mli) > _build/default/.unified_interface.objs/unified_interface__Streams.intf.d
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Fun_queue.cmi -c -intf fun_queue.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__MVar.cmi -c -intf MVar.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Composable_mutex.cmi -c -intf composable_mutex.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Sched.cmi -c -intf sched.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Streams.cmi -c -intf streams.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Fun_queue.cmo -c -impl fun_queue.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__Fun_queue.cmx -c -impl fun_queue.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Sched.cmo -c -impl sched.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__Sched.cmx -c -impl sched.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Composable_mutex.cmo -c -impl composable_mutex.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__MVar.cmo -c -impl MVar.ml)
+> File "MVar.ml", line 15, characters 10-12:
+> 15 |   | Full (v', q) ->
+>                ^^
+> Error (warning 27 [unused-var-strict]): unused variable v'.
+> File "MVar.ml", line 15, characters 14-15:
+> 15 |   | Full (v', q) ->
+>                    ^
+> Error (warning 27 [unused-var-strict]): unused variable q.
+> File "MVar.ml", line 64, characters 10-11:
+> 64 |   | Empty q ->
+>                ^
+> Error (warning 27 [unused-var-strict]): unused variable q.
+[2]
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Monad.cmi -c -intf monad.mli)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__Composable_mutex.cmx -c -impl composable_mutex.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Streams.cmo -c -impl streams.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__MVar.cmx -c -impl MVar.ml)
+> File "MVar.ml", line 15, characters 10-12:
+> 15 |   | Full (v', q) ->
+>                ^^
+> Error (warning 27 [unused-var-strict]): unused variable v'.
+> File "MVar.ml", line 15, characters 14-15:
+> 15 |   | Full (v', q) ->
+>                    ^
+> Error (warning 27 [unused-var-strict]): unused variable q.
+> File "MVar.ml", line 64, characters 10-11:
+> 64 |   | Empty q ->
+>                ^
+> Error (warning 27 [unused-var-strict]): unused variable q.
+[2]
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__Streams.cmx -c -impl streams.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .unified_interface.objs/byte -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/byte/unified_interface__Monad.cmo -c -impl monad.ml)
+$ (cd _build/default && /home/deepali/.opam/5.0.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .unified_interface.objs/byte -I .unified_interface.objs/native -I /home/deepali/.opam/5.0.0/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Unified_interface -o .unified_interface.objs/native/unified_interface__Monad.cmx -c -impl monad.ml)

@@ -1,0 +1,4 @@
+(library
+ (name unified_interface)
+ (public_name unified_interface)
+ (libraries fmt))
