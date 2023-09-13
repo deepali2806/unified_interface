@@ -4,7 +4,7 @@ open Printf
 type 'a stream_state = {
   mutex : Mutex.t;
   capacity : int;
-  item_q : 'a Queue.t;
+  item_q : ('a, exn) Result.t Queue.t;
   readers : 'a Sched.resumer Queue.t;
   writers : unit Sched.resumer Queue.t;
 }
@@ -25,13 +25,13 @@ let add stream item =
   match Queue.pop stream.readers with
   (* Resume the resumer with value*)
   | reader_resumer ->
-      if reader_resumer item then printf "Successfully resumed"
+      if reader_resumer (Ok item) then printf "Successfully resumed"
       else printf "Resumer was cancelled";
       Mutex.unlock stream.mutex
   (* REaders queue is empty  *)
   | exception Queue.Empty ->
       if Queue.length stream.item_q < stream.capacity then (
-        Queue.push item stream.item_q;
+        Queue.push (Ok item) stream.item_q;
         Mutex.unlock stream.mutex)
       else
         (* Add the writer in writer's queue *)
@@ -55,9 +55,11 @@ let take stream =
   | Some v ->
       (match Queue.pop stream.writers with
       | writer_resumer ->
-          if writer_resumer () then
+          if writer_resumer (Ok ()) then
             printf "Writer resumer is resumed successfully"
           else printf "Writer resumer is cancelled somewhere else"
       | exception Queue.Empty -> ());
       Mutex.unlock stream.mutex;
-      v
+      match v with
+      | Ok v -> v
+      | Error exn -> raise exn

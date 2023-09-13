@@ -34,7 +34,7 @@ let rec put mv v =
                   let resume = x in
                   let new_contents = Empty newQueue in
                   if Atomic.compare_and_set mv old_contents new_contents then
-                    if resume v then Some ()
+                    if resume (Ok v) then Some ()
                     else (* Retrying to get the next task*)
                       block r
                   else block r)
@@ -53,7 +53,7 @@ let rec put mv v =
             let new_contents = Empty newQueue in
             let ret = Atomic.compare_and_set mv old_contents new_contents in
             if ret then
-              if resume v then ()
+              if resume (Ok v) then ()
               else (* Retrying to get the next task*)
                 put mv v
             else put mv v)
@@ -84,7 +84,7 @@ let rec take mv =
                     Atomic.compare_and_set mv old_contents new_contents
                   in
                   if ret then
-                    let ret1 = resume () in
+                    let ret1 = resume (Ok ()) in
                     if ret1 then Some v else block r
                   else block r)
       in
@@ -101,6 +101,6 @@ let rec take mv =
             let new_contents = Full (v', newQueue) in
             let ret = Atomic.compare_and_set mv old_contents new_contents in
             if ret then
-              let ret1 = resume () in
+              let ret1 = resume (Ok ()) in
               if ret1 then v else take mv
             else take mv)

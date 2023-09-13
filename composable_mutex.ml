@@ -27,6 +27,6 @@ let rec unlock m =
       else unlock m (* failed CAS; retry *)
   | Locked (r :: rs) ->
       if Atomic.compare_and_set m old (Locked rs) then
-        if r () then () (* successfully transferred control *)
+        if r (Ok ()) then () (* successfully transferred control *)
         else unlock m (* cancelled; wake up next task *)
       else unlock m (* failed CAS; retry *)
