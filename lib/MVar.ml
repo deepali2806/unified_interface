@@ -12,7 +12,7 @@ let create v = Atomic.make (Full (v, Fun_queue.empty))
 let rec put mv v =
   let old_contents = Atomic.get mv in
   match old_contents with
-  | Full (v', q) ->
+  | Full _ ->
       let rec block r =
         let old_contents = Atomic.get mv in
         match old_contents with
@@ -61,7 +61,7 @@ let rec put mv v =
 let rec take mv =
   let old_contents = Atomic.get mv in
   match old_contents with
-  | Empty q ->
+  | Empty _ ->
       let rec block r =
         let old_contents = Atomic.get mv in
         match old_contents with
