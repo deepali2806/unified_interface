@@ -18,11 +18,11 @@ build: [
 ]
 
 pin-depends: [
-	[ "eio.0.6" "git+https://github.com/deepali2806/eio-1.git#suspend_effect_branch" ]
-	[ "eio_luv.0.6" "git+https://github.com/deepali2806/eio-1.git#suspend_effect_branch" ]
-	[ "eio_linux.0.6" "git+https://github.com/deepali2806/eio-1.git#suspend_effect_branch" ]
-	[ "eio_main.0.6" "git+https://github.com/deepali2806/eio-1.git#suspend_effect_branch" ]
-	[ "domainslib.0.5.0" "git+https://github.com/deepali2806/domainslib.git#suspendBranch" ]
+	[ "eio.0.12" "git+https://github.com/Sudha247/eio.gitt#suspend" ]
+	[ "eio_luv.0.12" "git+https://github.com/Sudha247/eio.gitt#suspend" ]
+	[ "eio_linux.0.12" "git+https://github.com/Sudha247/eio.gitt#suspend" ]
+	[ "eio_main.0.12" "git+https://github.com/Sudha247/eio.gitt#suspend" ]
+	[ "domainslib.0.5.0" "git+https://github.com/Sudha247/domainslib.git#suspend" ]
 	[ "lwt.5.6.1" "git+https://github.com/deepali2806/lwt.git#suspend_function" ]	
 
 ]
