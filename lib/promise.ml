@@ -12,22 +12,18 @@ let take p =
     match old with
     | Full v -> Some v
     | Empty l ->
-      if Atomic.compare_and_set p old (Empty (r::l))
-      then None else block r
-    in
+        if Atomic.compare_and_set p old (Empty (r :: l)) then None else block r
+  in
+  let old = Atomic.get p in
+  match old with Full v -> v | Empty _ -> perform (Suspend block)
+
+exception Already_filled
+
+let rec put p v =
   let old = Atomic.get p in
   match old with
-  | Full v -> v
-  | Empty _ -> perform (Suspend block)
-
-  exception Already_filled
-
-  let rec put p v =
-    let old = Atomic.get p in
-    match old with
-    | Full _ -> raise Already_filled
-    | Empty l ->
-        if Atomic.compare_and_set p old (Full v)
-        then List.iter (fun r -> if (r (Ok v)) then ()) l
-        else put p v
-
+  | Full _ -> raise Already_filled
+  | Empty l ->
+      if Atomic.compare_and_set p old (Full v) then
+        List.iter (fun r -> if r (Ok v) then ()) l
+      else put p v
