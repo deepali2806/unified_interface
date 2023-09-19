@@ -20,32 +20,6 @@ let create capacity =
     writers = Queue.create ();
   }
 
-let rec take stream =
-  Mutex.lock stream.mutex;
-  match Queue.take_opt stream.item_q with
-  | None ->
-      let block r =
-        Queue.push r stream.readers;
-        Mutex.unlock stream.mutex;
-        None
-      in
-      perform (Sched.Suspend block)
-  | Some v -> (
-      match Queue.pop stream.writers with
-      | writer_resumer ->
-          if writer_resumer (Ok ()) then (
-            printf "Writer resumer is resumed successfully";
-            Mutex.unlock stream.mutex;
-            match v with Ok v -> v | Error exn -> raise exn)
-          else (
-            printf "Writer resumer is cancelled somewhere else";
-            Mutex.unlock stream.mutex;
-            take stream (* Retrying to skip the cancelled resumer *))
-      | exception Queue.Empty -> (
-          ();
-          Mutex.unlock stream.mutex;
-          match v with Ok v -> v | Error exn -> raise exn))
-
 let rec add stream item =
   Mutex.lock stream.mutex;
   match Queue.pop stream.readers with
@@ -72,3 +46,29 @@ let rec add stream item =
           None
         in
         perform (Sched.Suspend block)
+
+let rec take stream =
+  Mutex.lock stream.mutex;
+  match Queue.take_opt stream.item_q with
+  | None ->
+      let block r =
+        Queue.push r stream.readers;
+        Mutex.unlock stream.mutex;
+        None
+      in
+      perform (Sched.Suspend block)
+  | Some v -> (
+      match Queue.pop stream.writers with
+      | writer_resumer ->
+          if writer_resumer (Ok ()) then (
+            printf "Writer resumer is resumed successfully";
+            Mutex.unlock stream.mutex;
+            match v with Ok v -> v | Error exn -> raise exn)
+          else (
+            printf "Writer resumer is cancelled somewhere else";
+            Mutex.unlock stream.mutex;
+            take stream (* Retrying to skip the cancelled resumer *))
+      | exception Queue.Empty -> (
+          ();
+          Mutex.unlock stream.mutex;
+          match v with Ok v -> v | Error exn -> raise exn))
